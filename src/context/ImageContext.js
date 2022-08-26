@@ -8,6 +8,7 @@ export const ImageContextProvider = ({ children }) => {
     const [images, setImages] = useState([])
     const [imageDetails, setImageDetails] = useState({})
     const [isLoading, setIsloading] = useState(false)
+    const [tags, setTags] = useState([])
 
     const searchImageHandler = (payload) => {
         setIsloading(true)
@@ -27,6 +28,8 @@ export const ImageContextProvider = ({ children }) => {
             let obj = {}
             obj['imageURL'] = data.largeImageURL
             obj['tags'] = data.tags.split(', ')
+            obj['user'] = data.user
+            setTags(data.tags.split(', '))
             setImageDetails(obj)
             setIsloading(false)
         }).catch((error) => {
@@ -36,7 +39,7 @@ export const ImageContextProvider = ({ children }) => {
     }
 
     return (
-        <ImageContext.Provider value={{ images, searchImageHandler, isLoading, getImageDetailsHandler, imageDetails }}>
+        <ImageContext.Provider value={{ images, searchImageHandler, isLoading, getImageDetailsHandler, imageDetails, tags }}>
             {children}
         </ImageContext.Provider>
     )

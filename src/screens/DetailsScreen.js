@@ -5,7 +5,7 @@ import Spinner from 'react-native-loading-spinner-overlay/lib'
 import AntDesign from "react-native-vector-icons/AntDesign"
 
 const DetailsScreen = ({ navigation }) => {
-  const { searchImageHandler, imageDetails, isLoading, images } = useContext(ImageContext)
+  const { searchImageHandler, imageDetails, isLoading, images, tags } = useContext(ImageContext)
 
   const searchImageByTag = (tag) => {
     searchImageHandler(tag)
@@ -21,18 +21,22 @@ const DetailsScreen = ({ navigation }) => {
           <View style={styles.detailsWrapper}>
             <Image style={styles.image} source={{ uri: imageDetails.imageURL }} />
             <View style={styles.tagLabel}>
+              <AntDesign name='user' style={{ color: "black", fontSize: 20}}/>
+               <Text style={{ color: 'black' }}>Author: {imageDetails.user}</Text>
+            </View>
+            <View style={styles.tagLabel}>
               <AntDesign name='tags' style={{ color: "black", fontSize: 20}}/>
                <Text style={{ color: 'black' }}>Tags: </Text>
             </View>
             
             <View style={styles.tagsContainer}>
               
-              {imageDetails.tags.map(tag => (
-                <>
+              {tags.map(tag => (
+                <View key={tag}>
                 <TouchableOpacity key={tag} style={styles.tagsButton} onPress={() => searchImageByTag(tag)}>
-                  <Text style={{ color: "black" }}> {tag} </Text>
+                  <Text style={{ color: "white", textAlign: 'center' }}> {tag} </Text>
                 </TouchableOpacity>
-                </>
+                </View>
               ))}
 
             </View>
@@ -68,14 +72,16 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 0.75,
     marginTop: 10,
-    flexDirection: "row",
     gap: 20,
+    textAlign: 'center'
   },
   tagsButton: {
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: 'grey',
     borderRadius: 20,
+    textAlign: 'center',
+    marginTop: 2,
   },
   tagLabel: {
     marginTop: 20,
