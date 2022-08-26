@@ -27,9 +27,7 @@ const SearchScreen = ({navigation}) => {
         <Spinner visible={isLoading}/>
         <View style={styles.wrapper}>
             <TextInput style={styles.input} placeholder='Search Image' value={imageName} onChangeText={text => setImageName(text)}/>
-            <Button title='Search' onPress={searchImage}>
-              
-            </Button>
+            <Button title='Search' onPress={searchImage} />
         </View>
     </View>
   )

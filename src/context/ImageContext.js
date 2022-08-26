@@ -15,7 +15,6 @@ export const ImageContextProvider = ({ children }) => {
             setImages(res.hits)
             setIsloading(false)
         }).catch((error) => {
-            console.log(error)
             setIsloading(false)
             throw error
         })
@@ -28,7 +27,6 @@ export const ImageContextProvider = ({ children }) => {
             let obj = {}
             obj['imageURL'] = data.largeImageURL
             obj['tags'] = data.tags.split(', ')
-            console.log(obj)
             setImageDetails(obj)
             setIsloading(false)
         }).catch((error) => {

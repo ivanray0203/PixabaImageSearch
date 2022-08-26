@@ -13,7 +13,6 @@ const DetailsScreen = ({ navigation }) => {
       navigation.navigate("Results")
     }
   }
-  console.log(imageDetails.tags)
   return (
     <>
       {imageDetails ? (
