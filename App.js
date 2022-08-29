@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import Navigation from './src/components/Navigation';
+import Navigation from './src/navigation/Navigation';
 import { ImageContextProvider } from "./src/context/ImageContext"
 
 

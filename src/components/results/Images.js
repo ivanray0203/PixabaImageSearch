@@ -3,6 +3,10 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { ImageContext } from "../../context/ImageContext"
 
+// navigation types
+
+import { DETAILS } from "../../navigation/NavigationTypes"
+
 const Images = ({ imageUrl, id }) => {
     const navigation = useNavigation()
     const { getImageDetailsHandler, imageDetails } = useContext(ImageContext)
@@ -10,7 +14,7 @@ const Images = ({ imageUrl, id }) => {
     const showImageDetails = () => {
         getImageDetailsHandler(id)
         if(imageDetails) {
-        navigation.navigate("Details", {id: id})
+        navigation.navigate(DETAILS)
         }
     }
     return (
@@ -39,4 +43,5 @@ const styles = StyleSheet.create({
         color: "black"
     }
 })
+
 export default Images

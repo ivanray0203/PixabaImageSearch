@@ -29,6 +29,7 @@ export const ImageContextProvider = ({ children }) => {
             obj['imageURL'] = data.largeImageURL
             obj['tags'] = data.tags.split(', ')
             obj['user'] = data.user
+            // set string to array
             setTags(data.tags.split(', '))
             setImageDetails(obj)
             setIsloading(false)

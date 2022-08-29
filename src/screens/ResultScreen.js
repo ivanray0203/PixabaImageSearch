@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { View, Text, FlatList, Image, StyleSheet, StatusBar, SafeAreaView } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay/lib'
 import { ImageContext } from "../context/ImageContext"
-import Images from '../components/Images/Images'
+import Images from '../components/results/Images'
 
 const ResultScreen = () => {
 const { images, isLoading } = useContext(ImageContext)
@@ -13,7 +13,7 @@ const { images, isLoading } = useContext(ImageContext)
        <FlatList
         numColumns={2}
         data={images}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
         renderItem={( {item} ) => (
             <Images imageUrl={item.previewURL} id={item.id}/>
         )}
